@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjxn15aqon70d"]
+
+[ext_resource type="Texture2D" uid="uid://y62q8404eusf" path="res://Assets/Sprites/asteroids-2x.png" id="1_ehavm"]
+[ext_resource type="Script" path="res://Assets/Scripts/bullet.gd" id="1_s7j12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5y1l"]
+radius = 3.16228
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_s7j12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ehavm")
+region_enabled = true
+region_rect = Rect2(448, 288, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j5y1l")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

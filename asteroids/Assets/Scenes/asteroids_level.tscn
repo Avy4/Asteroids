@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://cv6pskh2jik7y"]
+
+[ext_resource type="PackedScene" uid="uid://duylc3db1kv2h" path="res://Assets/Scenes/character.tscn" id="1_2rqj6"]
+[ext_resource type="Texture2D" uid="uid://wiylge2c2sxy" path="res://Assets/Sprites/spaceXD.png" id="1_fng5y"]
+[ext_resource type="Script" path="res://Assets/Scripts/asteroids_level.gd" id="1_ku0vi"]
+[ext_resource type="Script" path="res://Assets/Scripts/path_follow_asteroid.gd" id="3_6njwy"]
+[ext_resource type="PackedScene" uid="uid://frb2eqjh8c31" path="res://Assets/Scenes/asteroid.tscn" id="3_x06ob"]
+[ext_resource type="PackedScene" uid="uid://dy5v38r7yx1n7" path="res://Assets/Scenes/ufo.tscn" id="4_0oybt"]
+[ext_resource type="Script" path="res://Assets/Scripts/path_follow_ufo.gd" id="4_vlbpl"]
+[ext_resource type="Texture2D" uid="uid://chu06ulvib776" path="res://Assets/Sprites/white_heart.png" id="8_0vaxu"]
+
+[sub_resource type="Curve2D" id="Curve2D_48mh8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 16, 0, 0, 0, 0, 944, 16, 0, 0, 0, 0, 944, 944, 0, 0, 0, 0, 944, 944, 0, 0, 0, 0, 16, 944, 0, 0, 0, 0, 16, 16)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_vc4r4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 896, 864, 0, 0, 0, 0, 64, 864)
+}
+point_count = 2
+
+[node name="AsteroidsLevel" type="Node"]
+script = ExtResource("1_ku0vi")
+char = ExtResource("1_2rqj6")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.556953, 0.556953, 0.556953, 1)
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fng5y")
+
+[node name="Character" parent="." instance=ExtResource("1_2rqj6")]
+
+[node name="BulletHolder" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AsteroidsHolder" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AsteroidPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_48mh8")
+
+[node name="AsteroidPathFollow" type="PathFollow2D" parent="AsteroidPath"]
+position = Vector2(16, 16)
+script = ExtResource("3_6njwy")
+spawn = ExtResource("3_x06ob")
+
+[node name="AsteroidMarker2D" type="Marker2D" parent="AsteroidPath/AsteroidPathFollow"]
+
+[node name="Timer" type="Timer" parent="AsteroidPath/AsteroidPathFollow"]
+wait_time = 5.0
+autostart = true
+
+[node name="UFOPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vc4r4")
+
+[node name="UFOPathFollow" type="PathFollow2D" parent="UFOPath"]
+position = Vector2(896, 864)
+rotation = 3.14159
+script = ExtResource("4_vlbpl")
+spawn = ExtResource("4_0oybt")
+
+[node name="UFOMarker2D" type="Marker2D" parent="UFOPath/UFOPathFollow"]
+position = Vector2(6.99381e-07, 0)
+rotation = 3.14159
+
+[node name="Timer" type="Timer" parent="UFOPath/UFOPathFollow"]
+wait_time = 20.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 31.0
+text = "Points: "
+
+[node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 72.0
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_0vaxu")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_0vaxu")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_0vaxu")
+expand_mode = 2
+
+[connection signal="timeout" from="AsteroidPath/AsteroidPathFollow/Timer" to="AsteroidPath/AsteroidPathFollow" method="_on_timer_timeout"]
+[connection signal="timeout" from="UFOPath/UFOPathFollow/Timer" to="UFOPath/UFOPathFollow" method="_on_timer_timeout"]

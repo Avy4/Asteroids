@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw4i11mcj1skm"]
+
+[ext_resource type="Texture2D" uid="uid://6l0x6h5x65a5" path="res://Assets/Sprites/bg.png" id="1_3g068"]
+[ext_resource type="Script" path="res://Assets/Scripts/main_menu.gd" id="1_di20g"]
+[ext_resource type="FontFile" uid="uid://cbkno6frpcey3" path="res://Assets/Sprites/FounderPersonalUseBold-1G832.ttf" id="2_2y0il"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_di20g")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BGPic" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3g068")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_2y0il")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 182.0
+offset_right = 20.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.977532, 0.853571, 0.89407, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_2y0il")
+theme_override_font_sizes/font_size = 128
+text = "Asteroids"
+
+[node name="LastScore" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -480.0
+offset_top = 912.0
+offset_right = 480.0
+offset_bottom = 960.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.977532, 0.853571, 0.89407, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Previous Score:  "
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
