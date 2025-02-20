@@ -4,7 +4,6 @@ extends Node
 @onready var points_label: Label = $CanvasLayer/PointsLabel
 @onready var heart_container: HBoxContainer = $CanvasLayer/HeartContainer
 @onready var asteroids_holder: Node = %AsteroidsHolder
-@export var char : PackedScene
 
 var curr_lives = 3
 
@@ -15,7 +14,7 @@ func _ready() -> void:
 	GlobalVars.lives = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Updates the points label very frame
 	points_label.text = "Points: " + str(GlobalVars.points)
 	# Checks if the character is dead

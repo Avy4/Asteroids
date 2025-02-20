@@ -61,8 +61,3 @@ hyperspace_warp={
 
 2d_physics/layer_1="Player + Bullet"
 2d_physics/layer_2="Asteroid + UFO"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

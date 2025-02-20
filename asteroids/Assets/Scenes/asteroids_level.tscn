@@ -23,7 +23,6 @@ point_count = 2
 
 [node name="AsteroidsLevel" type="Node"]
 script = ExtResource("1_ku0vi")
-char = ExtResource("1_2rqj6")
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(0.556953, 0.556953, 0.556953, 1)

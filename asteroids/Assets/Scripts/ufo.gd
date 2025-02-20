@@ -8,7 +8,7 @@ var warp_count = 0
 const SPEED = -5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Just calls screen wrap
 	_screen_wrap()
 

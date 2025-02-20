@@ -7,7 +7,7 @@ extends Area2D
 const SPEED = 650
 
 # Checks if bullet needs to be wrapped every frame
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_screen_wrap()
 
 # Moves the bullet every fame (60)

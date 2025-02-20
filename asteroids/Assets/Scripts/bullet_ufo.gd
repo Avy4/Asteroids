@@ -13,7 +13,7 @@ func _ready():
 	pos_move_to = rand_change + GlobalVars.char_position
 
 # Checks if bullet needs to be wrapped every frame
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Calls screen wrap
 	_screen_wrap()
 	# If the bullet reaches its position it removes itself

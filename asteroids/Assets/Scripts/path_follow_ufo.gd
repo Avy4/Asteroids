@@ -5,7 +5,7 @@ extends PathFollow2D
 @export var spawn : PackedScene
 
 # Every frame (60 fps)
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Increases progress by .01 to .1 (out of 1) to randomize UFO spawns
 	progress_ratio += randf_range(.01, .1)
 

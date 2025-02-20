@@ -6,7 +6,7 @@ extends PathFollow2D
 @export var spawn : PackedScene
 
 # Runs every frame (const 60 frames)
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Increases progress by .01 to .1 (out of 1) to randomize asteroid spawns
 	progress_ratio += randf_range(.01, .1)
 

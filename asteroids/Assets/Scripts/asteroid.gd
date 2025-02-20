@@ -20,12 +20,12 @@ func _ready() -> void:
 	speed_y = randf_range(-3, 3)
 
 # Checks every frame if wrapping is needed
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Calls screen wrap function
 	_screen_wrap()
 
 # Moves every frame (60) 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Moves the asteroid
 	position += Vector2(speed_x , speed_y) * speed_multiplier
 
