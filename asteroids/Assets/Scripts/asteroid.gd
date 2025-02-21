@@ -4,6 +4,8 @@ extends Node2D
 @onready var screen_size = get_viewport_rect().size
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var asteroid_sprite: Sprite2D = $AsteroidSprite
+@onready var explosion_player: AudioStreamPlayer2D = $ExplosionPlayer
+
 @export var speed_multiplier : float = 1
 
 var asteroid_type : Array = [0, 160, 320]
@@ -52,8 +54,14 @@ func _duplicate():
 			dupe.scale = scale * .75
 			# Speeds up the dupe
 			dupe.speed_multiplier = speed_multiplier * randf_range(1, 1.5)
+	# Plays Explosion noise
+	explosion_player.play()
+	# Makes the asteroid non-interactable
+	visible = false
+	# Have to call_deferred so it doesn't error (Why?)
+	call_deferred("_disable")
 	# Deletes the current asteroid
-	queue_free()
+	# queue_free()
 
 # Checks if a bullet has impacted the asteroid
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -67,3 +75,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		_duplicate()
 		# Adds points to the global var
 		GlobalVars.points += 100
+
+# Func that disables the collision shape
+func _disable():
+	# Disabled = true
+	collision_shape_2d.disabled = true
+
+# Deletes the asteroid once the explosion noise is finished
+func _on_explosion_player_finished() -> void:
+	# Frees the asteroid obj
+	queue_free()

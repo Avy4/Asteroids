@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://frb2eqjh8c31"]
+[gd_scene load_steps=5 format=3 uid="uid://frb2eqjh8c31"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/asteroid.gd" id="1_7qlna"]
 [ext_resource type="Texture2D" uid="uid://y62q8404eusf" path="res://Assets/Sprites/asteroids-2x.png" id="1_ve73j"]
+[ext_resource type="AudioStream" uid="uid://bd127ao2dqitm" path="res://Assets/Music/8bit_bomb_explosion.wav" id="3_s5ojf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rrqyq"]
 radius = 50.4876
@@ -21,4 +22,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rrqyq")
 
+[node name="ExplosionPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s5ojf")
+bus = &"Sound Effects"
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="ExplosionPlayer" to="." method="_on_explosion_player_finished"]

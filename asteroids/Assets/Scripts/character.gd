@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var bullet_holder: Node = %BulletHolder
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var shoot_pos: Marker2D = $ShootPos
+@onready var lazer_beam_player: AudioStreamPlayer2D = $LazerBeamPlayer
 @export var bullet : PackedScene
 
 const SPEED = 250.0
@@ -37,6 +38,8 @@ func _shoot():
 	if (Input.is_action_just_pressed("shoot") && bullet_holder.get_child_count() < 4):
 		# Creates the bullet
 		var b = bullet.instantiate()
+		# Plays bullet firing noise
+		lazer_beam_player.play()
 		# Adds the bullet to the tree
 		bullet_holder.add_child(b)
 		# Sets the position of the bullet

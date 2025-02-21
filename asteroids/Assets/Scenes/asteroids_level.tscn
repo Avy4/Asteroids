@@ -27,6 +27,7 @@ script = ExtResource("1_ku0vi")
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(0.556953, 0.556953, 0.556953, 1)
 z_index = -1
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
