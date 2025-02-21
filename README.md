@@ -4,12 +4,12 @@ Itch.io Link: [https://avy4.itch.io/ping-pong](https://avy4.itch.io/asteroids)
 Game #4 made for the 20 games challenge.
 
 Controls:
-Thrust - W, ↑ 
+- Thrust - W, ↑ 
 
-Turn Left - A, ←
+- Turn Left - A, ←
 
-Turn Right - D,  →
+-  Turn Right - D,  →
 
-Shoot - Space Bar
+-  Shoot - Space Bar
 
-Hyper Space Warp - Z, Shift
+-  Hyper Space Warp - Z, Shift
