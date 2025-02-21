@@ -5,7 +5,11 @@ Game #4 made for the 20 games challenge.
 
 Controls:
 Thrust - W, ↑ 
+
 Turn Left - A, ←
+
 Turn Right - D,  →
+
 Shoot - Space Bar
+
 Hyper Space Warp - Z, Shift
