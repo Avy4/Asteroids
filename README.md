@@ -1,5 +1,5 @@
 # Asteroids
-Itch.io Link: [https://avy4.itch.io/ping-pong](https://avy4.itch.io/asteroids)
+Itch.io Link: https://avy4.itch.io/asteroids
 
 Game #4 made for the 20 games challenge.
 
